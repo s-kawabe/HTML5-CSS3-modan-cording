@@ -1,0 +1,595 @@
+@charset "UTF-8";
+
+/* remとemについて
+rem-CSS3から新しく追加された
+「root＋em」でrem。
+下記でhtmlに設定しているサイズがルートとなり、
+このルートを基にしたサイズで計算される。
+(emの場合は親なので、親子関係が続いていくにつれて
+ずれていく。)
+
+※一般的なブラウザの基準フォントサイズは16pxのため、
+16px*62.5%→10px　となり、以降は
+1.3rem→13px  2.0rem→20pxとできる為、おすすめ。★
+ */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: #333;
+  font-size: 1.2rem;
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+/* box-sizingプロパティ
+content-box
+パディングとボーダーを幅と高さに含めない（初期値）
+border-box
+パディングとボーダーを幅と高さに含める
+inherit
+親要素の値を継承する
+*/
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+a:link, a:hover, a:visited, a:active {
+  color: #d03c56;
+  text-decoration: none;
+}
+
+/* box-shadowプロパティ
+box-shadow: [右方向のずれ] [下方向のずれ] [ぼかしの大きさ] [拡張の大きさ] [影の色]
+右、下方向の設定値はマイナスも設定可能。
+コロン以降頭に`inset`を付加することで要素の内側にも影をつけることが可能
+，で区切ることで内側と外側の両方を設定することも可能
+※[影の色]　の設定はrgbaで透過度を設定するとより影らしくなる★
+*/
+
+.header {
+  width: 100%;
+  padding: 28px 0 10px;
+  background: url('../images/bg-header.gif') repeat-x;
+  box-shadow: 0 0 10px 1px #e3e3e3;
+}
+
+  .logo {
+    width: 225px;
+    height: 56px;
+    margin: 0 auto;
+    background: url('../images/logo.png') no-repeat;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+  }
+
+    .logo a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+  .global-nav {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+    .global-nav .nav-item {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+       /* letter-spacingプロパティ
+       文字と文字の間隔を指定する。
+       ※タイトル等目立つ箇所のテキストにほんの少し設定するとユーザビリティUP★
+        */
+      .global-nav .nav-item a {
+        display: inline-block;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #666;
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        transition: 0.35s;
+      }
+
+      /* backgroundプロパティ
+       背景に関する以下のプロパティをまとめて設定可能なショートハンドプロパティ
+       background-color 背景色
+       background-image　背景画像
+       background-repeat　背景画像の繰り返し(初期値はrepeatになっており縦横に繰り返される)
+       background-position　背景画像の位置
+       background-size　背景画像のサイズ
+       background-attachment　背景画像のスクロール有無
+
+       sizeのみ、positionの後にスラッシュ区切りで書く必要有り
+       ※個別でプロパティを設定した後にショートハンドプロパティを記述すると
+       初期値で上書きされるため注意★
+       */
+
+      /* .nav-item.active
+      →間を空けないこの描き方
+      →どちらのクラス名も持つ要素。という意味 */
+      .global-nav .nav-item.active a,
+      .global-nav .nav-item  a:hover {
+        transform: rotate(20deg);
+        font-weight: bold;
+      }
+
+.wrapper {
+  width: 970px;
+  margin: 30px auto 40px;
+}
+
+.main {
+  display: block;
+  float: left;
+  width: 660px;
+}
+
+/* trantisionプロパティ
+オブジェクトの変化にかける時間を設定可能。
+transition [時間]
+※末尾に時間関数設定可能 (ease-inなど)
+※先頭にプロパティ名を設定すると特定のオブジェクト変化のみを対象とすることが可能
+ */
+ .hidden {
+   display: none;
+ }
+
+ .hot-topic {
+   display: block;
+   height: 300px;
+   margin-bottom: 30px;
+   box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.15);
+   transition: opacity 0.15s;
+ }
+
+  /* opacityプロパティ
+  0~1の値を設定可能
+  0に近い程白に近い色となる。
+  ※safariにこれをかけると文字もちらつく現象有り
+  →ベンダープレフィックスを付加したfont-smoothingを指定
+  →-webkit-font-smoothing:antialiased;
+   */
+  .hot-topic:hover {
+    opacity: 0.85;
+  }
+
+    .hot-topic .image {
+      float: left;
+      width: 50%;
+      height: 100%;
+    }
+
+    .hot-topic .content {
+      position: relative;
+      float: left;
+      width: 50%;
+      height: 100%;
+      padding: 105px 25px 0;
+      background-color: #2d3d54;
+      line-height: 1.6;
+    }
+
+    .hot-topic .title {
+      margin-bottom: 15px;
+      color: #fff;
+      font-weight: nomal;
+      font-size: 2.0rem;
+    }
+
+    .hot-topic .desc {
+      color: #ddc;
+    }
+
+    /*line-heightプロパティ
+    行の高さを指定できる。－※負の値は設定出来ない
+    nomal 初期値
+    数値＋単位 (1px等) そのままのいみ。
+    割合 (%)　font-sizeを基準とした％の割合(子要素に指定しても、親要素のfont-size基準)
+    数値のみ font-sizeにこの数値をかけた高さになる(※子要素に指定すると、子要素のfont-size基準)
+
+    行の高さとフォントサイズの関係ですが、 例えばline-heightが20pxでfont-sizeが14pxの場合、
+     20px（行の高さ）から14px（フォントサイズ）を引いた残りの6pxが、行間として上下均等に3pxずつ割り振られます。
+     */
+    .hot-topic .date {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 140px;
+      padding: 4px;
+      background-color: #fff;
+      color: #2d3d54;
+      text-align: center;
+      letter-spacing: 1px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      line-height: 1;
+      /* vertical-align: bottom; */
+    }
+
+     /* 縦横に繰り返すことで表現できる画像デザインは
+     画像サイズを下記ファイルのように小さくすることが
+     全体の要領の節約的観点でよいとされている */
+    .heading {
+      padding: 10px 12px;
+      background: url('../images/bg-slash.gif');
+      letter-spacing: 1px;
+      font-size: 1.6rem;
+    }
+
+    /* ★ページの中に小さいスクロール領域をつくる★
+    max-width,max-heightと
+    overflow(-x,-y):autoを組み合わることで
+    max-width,max-heightの設定値をはみ出た場合に
+    スクロールで表現できる*/
+    .scroll-list {
+      max-height: 220px;
+      overflow-y: auto;
+      margin-bottom: 30px;
+      list-style-type: none;
+    }
+
+    /* listの親要素にfont-size: 0;を指定★
+    →親要素（以下の場合は.scroll-item a）の中に複数の子要素タグが
+    存在する場合、（.date .category .title）それぞれのタグ間で
+    半角スペースが生まれてしまう。
+    そのため、親要素にfont-size: 0を指定して子要素で
+    それぞれ指定しなおす。という手法をとることで
+    この半角スペースを解消できる。 */
+    .scroll-list .scroll-item a {
+      display: block;
+      padding: 10px 15px;
+      color: #333;
+      font-size: 0;
+      transition: background-color 0.1s;
+    }
+
+    /* :nth-of-type疑似ｸﾗｽ
+      指定した複数のタグの指定方法
+      nth-of-type(2) - 2番目の要素
+      nth-of-type(2n) - 2の倍数の要素
+      nth-of-type(even) - 偶数
+      nth-of-type(odd) - 奇数
+      等、指定が行える。
+      なお、同じクラス名でも途中からタグ名が異なる場合は
+      動きが変わるため要注意。 */
+    .scroll-list .scroll-item:nth-of-type(even) a {
+      background: url('../images/bg-slash.gif');
+    }
+
+    .scroll-list .scroll-item a:hover {
+      background-color: #fafaf8;
+    }
+
+    .scroll-list .date {
+      display: inline-block;
+      width: 19%;
+      letter-spacing: 1px;
+      font-weight: bold;
+      font-size: 1.0rem;
+    }
+
+    .scroll-list .category {
+      display: inline-block;
+      width: 8%;
+      border-radius: 5px;
+      background-color: #d03c56;
+      color: #fff;
+      text-align:center;
+      letter-spacing: 1px;
+      line-height: 16px;
+      font-size: 1.0rem;
+    }
+
+    .scroll-list .category.news {
+      background-color: #2c3c53;
+    }
+
+    /*
+    overflow: hidden;　→要素からはみ出た分を隠す
+    text-overflow: ellipsis;　→要素からテキストは見だす場合、末尾に...を付加
+    white-space: nowrap;　→1行分の文章がwidthからはみ出ても折り返さない
+    →以上の３つを組み合わせる。
+     */
+
+    .scroll-list .title {
+      display: inline-block;
+      width: 73%;
+      padding-left: 15px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 1.2rem;
+    }
+
+  /* 子要素の画像をabsoluteにするため、親要素のpositionプロパティには
+  　　relativeを指定する。
+  ★positionプロパティは、初期値のstaticでは、left,right,top,bottom
+  による位置指定はできない。
+  →relative,absolute,fixedを指定することで上記の４つの位置指定が可能となる。*/
+  .article-box {
+    position: relative;
+    display: block;
+    width: 315px;
+    height: 360px;
+    margin-bottom: 30px;
+    padding: 210px 15px 0;
+    box-shadow: 6px 6px 8px -4px rgba(0,0,0,0.15);
+    transition: opacity:0.15s;
+  }
+
+  .article-box .title {
+    margin-top: 30px;
+    color: #555;
+    font-size: 1.4rem;
+    line-height: 1.6;
+  }
+
+  .article-box .desc {
+    margin-top: 5px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+/* displayプロパティがinline(初期値)の場合、
+widthとheightを直接指定することができない。
+→time要素の初期値はinlineのため、blockに上書き。 */
+  .article-box .date {
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+    display: block;
+    width: 160px;
+    padding: 4px;
+    background-color: #b5d264;
+    color: #2d3d54
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  .article-box .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .article-box:hover {
+    opacity: 0.8;
+  }
+
+  .article-box:nth-of-type(odd) {
+    float:left;
+  }
+
+  .article-box:nth-of-type(even) {
+    float:right;
+  }
+
+.sidemenu {
+  float: right;
+  width: 275px;
+}
+
+  .ranking {
+    margin-bottom: 30px;
+    list-style-type: none;
+    counter-reset: ranking;
+  }
+
+  .ranking .ranking-item {
+    margin-top: 15px;
+    position: relative;
+  }
+
+  .ranking .ranking-item a {
+    display:block;
+    font-size: 0;
+    transition: opacity 0.15;
+  }
+
+  .ranking .ranking-item  a:hover {
+    opacity: 0.8;
+  }
+
+    .ranking .image {
+      width: 55px;
+      height: 55px;
+    }
+
+    .ranking .text {
+      display: inline-block;
+      width: 200px;
+      color: #000;
+      margin-left:20px;
+      vertical-align: top;
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+
+    .ranking .order {
+      position: absolute;
+      top: -9px;
+      left: 44px;
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      /* margin: 0 10px; */
+      border: 1px solid #ccc;
+      color: #ddd;
+      /* vertical-align: 20px; */
+      text-align: center;
+      font-weight: bold;
+      line-height: 16px;
+      border-radius: 50%;
+      background-color: #fff;
+      /* -webkit-ransform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg); */
+    }
+
+    .ranking .order::before {
+      content: counter(ranking);
+      counter-increment: ranking;
+      /* display: inline-block; */
+      font-size: 1.0rem;
+      /* -webkit-ransform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg); */
+    }
+
+  .ranking .ranking-item:nth-of-type(1) .order,
+  .ranking .ranking-item:nth-of-type(2) .order,
+  .ranking .ranking-item:nth-of-type(3) .order, {
+    border: none;
+    font-weight: nomal;
+    line-height: 20px;
+  }
+
+  .ranking .ranking-item:nth-of-type(1) .order {
+    background-color: #dab413;
+  }
+
+  .ranking .ranking-item:nth-of-type(2) .order {
+    background-color: #6e7b84;
+  }
+
+  .ranking .ranking-item:nth-of-type(3) .order {
+    background-color: #a0541a;
+  }
+
+  .documents {
+    margin: 10px 10px 30px;
+  }
+
+  .documents,
+  .documents ul {
+    list-style-type: none;
+  }
+
+  .documents > li .title {
+    margin:15px 0;
+    padding-left: 8px;
+    border-left: 5px solid #d03c56;
+    font-size: 1.4rem;
+    line-height: 1.2;
+  }
+
+  .documents > li + li {
+    margin-top: 25px;
+  }
+
+  .documents > li ul {
+    margin: 15px;
+  }
+
+  .documents > li ul > li {
+    margin-bottom: 15px;
+    padding-left: 10px;
+    background: url('../images/arrow.gif') no-repeat left center;
+  }
+
+  .documents a:hover {
+    text-decoration: underline;
+  }
+
+  .search-box {
+    padding: 15px;
+    background-color: #ccc;
+    font-size: 0;
+  }
+
+  .search-box > *  {
+    font-size: 1.2rem;
+  }
+
+  .search-box .search-input {
+    width: 205px;
+    height: 26px;
+    padding: 0 10px;
+    border: none;
+  }
+
+  .search-box .search-button {
+    width: 40px;
+    height: 26px;
+    border: none;
+    background-color: #d03c56;
+    color: #fff;
+    cursor:pointer;
+  }
+
+  .search-box .text {
+    margin-top: 12px;
+  }
+
+.footer {
+  width: 100%;
+  padding: 20px 0 30px;
+  background: #2d3d54 url('../images/bg-footer.gif');
+  color: #fff;
+}
+
+  .horizontal-list {
+    width: 970px;
+    margin: 0 auto;
+    text-align: right;
+    font-size: 0;
+  }
+
+  .horizontal-list .horizontal-item {
+    display: inline-block;
+    padding: 0 15px;
+    letter-spacing: 1px;
+  }
+
+  .horizontal-list .horizontal-item + .horizontal-item {
+    border-left: 1px solid #fff;
+  }
+
+  .horizontal-list .horizontal-item a {
+    border-bottom: 1px dashed #777;
+    color: #bbb;
+    font-size: 1.1rem;
+    transition: color 0.15s;
+  }
+
+  .horizontal-list .horizontal-item a:hover {
+    color: #ddd;
+  }
+
+  .copyright {
+    margin-top: 30px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+/* clearfix用、これがないとfloatした分の高さが認識されない
+floatしたら、親要素にこれを設定というイメージ、
+↓を覚える。★
+ */
+
+ /* clearプロパティ
+ left
+左寄せされた要素に対する回り込みを解除します。
+right
+右寄せされた要素に対する回り込みを解除します。
+both　★
+左寄せ、または右寄せされた全ての要素に対する回り込みを解除します。
+none
+回り込みを解除しません。これが初期値です
+  */
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}

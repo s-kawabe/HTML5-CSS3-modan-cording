@@ -1,0 +1,240 @@
+html {
+  font-size: 62.5%;
+}
+
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+body {
+  padding: 30px;
+  background-color: #f6f7fb;
+  color: #333;
+  font-size: 1.2rem;
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+/* 
+link　未訪問リンク
+visited　1回でも訪問したことあるリンク
+hover リンクホバー時
+active　リンクをクリック押し込み中
+*/
+a:link, a:visited, a:hover, a:active {
+  color: #7c5119;
+  text-decoration: none;
+}
+
+.item {
+  width: 180px;
+  margin-bottom: 4px;
+  padding: 8px;
+  border-bottom: 3px solid;
+  border-radius: 5px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.item .image {
+  display:  block;
+  width: 100%;
+  height: 109px;
+  z-index: 1;
+  position: relative;
+}
+
+.item .image img {
+  width: 100%;
+}
+  .item-m {
+    width: 364px;
+  }
+
+  .item-m .image {
+    height: 146px;
+  }
+  
+  .item-l {
+    width: 732px;
+  }
+
+  .item-l .image {
+    height: 403px;
+  }
+
+
+.item .category {
+  margin: 15px 9px 10px;
+  color: #aaa;
+  letter-spacing: 1px;
+  font-family: "Trebuchet MS", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+.item .category::before {
+  content: '';
+  display:inline-block;
+  width:19px;
+  height:19px;
+  margin-right: 5px;
+  border: 2px solid;
+  border-radius: 50%;
+  vertical-align: -5px;
+}
+
+.item .description {
+  margin: 10px;
+  line-height: 1.5;
+}
+
+.item > a {
+  display: block;
+  margin: -8px -8px -11px;
+  padding: 8px 8px 11px;
+  border-radius: inherit;
+  color: #777;
+  transition: all 0.3s;
+}
+
+.item > a:hover {
+  box-shadow: 0 0 6px -1px rgba(0,0,0,0.3);
+  opacity: 0.8;
+}
+
+.item-maindish,
+.item-maindish category::before {
+  border-color:#ffcdcb
+}
+
+.item-appetizer,
+.item-appetizer category::before {
+  border-color:#76c047
+}
+
+.item-column,
+.item-column category::before {
+  border-color:#fff100
+}
+
+.item-breaktime,
+.item-breaktime category::before {
+  border-color:#c1efff
+}
+
+.header {
+  padding: 25px 0;
+  border-bottom: none;
+  text-align: center;
+}
+
+.logo {
+  width: 136px;
+  height: 136px;
+  transition: transform 0.3s;
+}
+
+.logo:hover {
+  transform: rotate(360deg);
+}
+
+.nav {
+  margin: 35px auto 10px;
+}
+
+.nav-item {
+  margin-top: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.nav-item a{
+  display: inline-block;
+}
+
+/* ★かなり使えそう！！
+こうやると、線は中央から左右に伸びていく。
+ちなみに
+親要素をinline-block,子要素(これ)をblockにしないといけない。
+*/
+
+/* display:blockは、要素いっぱいまで広げちゃうから親要素はinline-blockでなければならない */
+.nav-item a::after {
+  content: '';
+  display: block;
+  width:0;
+  margin: 6px auto 0;
+  border-bottom: 1px solid #7c5119;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-item a:hover::after {
+  width: 100%;
+}
+
+/* 仕様変更 */
+/*
+ ★→↑のめんどくさいﾏｰｼﾞﾝのやつを調整する為。
+ absolute指定時は、top,left,tightを使って位置を調整する。
+ これ無しでやると、↑のﾏｰｼﾞﾝ設定のせいで領域をはみ出したりしちゃう。
+ 今回はHTMLを調整すればかなり楽に範囲指定ができたっぽい
+ */
+.item > a .image::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top:0; 
+  bottom: 0;
+  left:0; 
+  right:0; 
+  height: 109px; 
+  z-index: 2;
+  transition: background-color 0.5s;
+}
+
+.item-m > a .image::before {
+  height: 146px;
+}
+
+.item-l > a .image::before {
+  height: 403px;
+}
+
+/* p234 */
+.item > a .image::after {
+  content: 'MORE';
+  position:absolute; 
+  width:100px;
+  padding: 8px;
+  border:3px solid #fff;
+  color:#fff;
+  top:50%;
+  left:150%;
+  display: block;
+  margin-top: -19px;
+  margin-left: -50px; 
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  z-index:3;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.item-m > a .image::after{
+  top:72px;
+}
+
+.item-l > a .image::after{
+  top:190.5px;
+} 
+
+
+.item > a:hover  .image::before {
+  background-color: rgba(0,0,0,0.5);
+}
+
+.item > a:hover .image::after {
+  opacity: 1;
+  left:50%;
+}

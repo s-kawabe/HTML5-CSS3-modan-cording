@@ -1,0 +1,492 @@
+@charset "UTF-8";
+
+html {
+    font-size: 62.5%;
+}
+  
+*, *::before, *::after{
+    box-sizing: border-box;
+  }
+
+body { 
+    /* backgrounf-color background-image background-repeat background-attachment background-position */
+    /*          背景色 背景画像 画像を繰り返すか 画像を固定するか 画像をどこに位置させるか */
+    background: #151515 url(../images/bg.png) no-repeat fixed left bottom;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    font-size: 1.4rem;
+    /* 左が優先順位高い。　★RaleWay→WEBフォント */
+    font-family: Raleway, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+/*--------------------------------------------------------  
+ヘッダーコーディング
+--------------------------------------------------------*/
+.header {
+    padding: 170px 30px 80px;
+}
+
+/* サブタイトル */
+.site-title-sub {
+    margin: 0 0 30px;
+    letter-spacing: 1px;
+    font-size: 2.2rem;
+}
+
+/* サブタイトルの横の線 */
+.site-title-sub::before,
+.site-title-sub::after {
+    content: '';
+    display: inline-block;
+    width: 140px;
+    height: 2px;
+    margin: 0 30px;
+    background-color: #fff;
+    vertical-align: middle;
+    transition: 0.3s;
+}
+
+/* 　おりじなる 
+.site-title-sub:hover:before,
+.site-title-sub:hover::after {
+    height: 22px;
+    background-color: transparent;
+    border-top: solid 2px #fff;
+    border-bottom: solid 2px #fff;
+} */
+
+/* メインタイトル */
+.site-title {
+    margin: 50px 0 40px;
+    font-size: 7.6rem;
+}
+
+/* ディスクリプション */
+.site-description {
+    margin-bottom: 50px;
+    color: #888;
+    font-size: 1.6rem;
+}
+
+/* ボタン */
+.button {
+    display: inline-block;
+    width: 200px;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: #afa58d;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+}
+
+オリジナル
+.button::before {
+    font-family: "Font Awesome 5 Free";
+    content: '\f124';
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.button:hover {
+    opacity: 0.9;
+}
+
+.button-showy {
+    background-color: #f1b400;
+}
+
+.buttons .button {
+    margin: 10px;
+}
+
+/*--------------------------------------------------------  
+セクション１(ABOUT　ME)のコーディング
+--------------------------------------------------------*/
+.about {
+    padding: 80px 30px;
+    background-color: #fff;
+    color: #333;
+}
+
+.heading {
+    /* 下線が横幅マックスまで広がらないようにする。 */
+    display: inline-block;
+    position: relative;
+    margin: 30px 0 15px;
+    padding: 15px;
+    letter-spacing: 2px;
+    font-size: 4rem;
+}
+
+/* .heading::before,
+.heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid #999;
+}
+
+.heading::before {
+    bottom: 5px;
+} */
+
+
+
+
+.about-text {
+    margin: 30px 0;
+    line-height: 2.5;
+}
+
+/*--------------------------------------------------------  
+セクション２(WORKS)のコーディング
+--------------------------------------------------------*/
+.works {
+    background-color: #383634;
+    padding: 80px 0;
+}
+
+.work-wrapper {
+    display: table;
+    width: 100%;
+    margin-top: 60px;
+    table-layout: fixed;
+}
+
+.work-box {
+    display: table-cell;
+    position: relative;
+    overflow: hidden;
+}
+
+.work-box::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-size: 100% 100%;
+    opacity: 0.2;
+    transform: scaleY(-1);
+}
+
+.work-box.tree::after {
+    background: url(../images/tree.jpg);
+}
+
+.work-box.building::after {
+    background: url(../images/building.jpg);
+}
+
+.work-box.lake::after {
+    background: url(../images/lake.jpg);
+}
+
+.work-box.sky::after {
+    background: url(../images/sky.jpg);
+}
+
+.work-box:nth-of-type(odd) .work-image{
+    margin: 60% 0 0;
+}
+
+.work-box:nth-of-type(odd) .work-description,
+.work-box:nth-of-type(odd)::after{
+    top: 0;
+}
+
+.work-image {
+    display: block;
+    width: 100%;
+    margin: 0 0 60%;
+    transition: transform 0.4s;
+}
+
+.work-box:nth-child(odd) .work-image:hover{
+    transform: scale(1.2);
+    transform-origin: 50% 0%;
+}
+
+.work-box:nth-child(even) .work-image:hover{
+    transform: scale(1.2);
+    transform-origin: 50% 100%;
+}
+
+.work-description {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 50%;
+    overflow-y: auto;
+}
+
+.work-description-inner {
+    display: table;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.work-text {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 1.2rem;
+    line-height: 2;
+}
+
+.work-text .button {
+    width: 60%;
+    margin-top: 20px;
+    padding: 3px;
+}
+
+.button-ghost {
+    border: 1px solid #fff;
+    background-color: rgba(255,255,255,0.15);
+}
+
+/*--------------------------------------------------------  
+セクション３(MY SKILLS)のコーディング
+--------------------------------------------------------*/
+.skills {
+    padding: 80px 0;
+    background-color: #fff;
+    color: #333;
+}
+
+.skills-wrapper {
+    display: table;
+    width: 80%;
+    margin: 50px auto 0;
+    table-layout: fixed;
+}
+
+.skill-box {
+    display: table-cell;
+}
+.skill-icon {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
+    /* borderショートハンドでカラーの指定をしないとcurrentColorという設定になる。
+    意味は「その要素のcolorプロパティの値」*/
+    border: 4px solid;
+    border-radius: 50%;
+    color: #f1b400;
+    font-size: 8rem;
+    /* 高さ150pxから上下4pxを引いた値 */
+    line-height: 142px;
+}
+
+.skill-title {
+    margin: 0 20px 20px;
+    font-size: 2rem;
+}
+
+.skill-text {
+    margin: 0 20px;
+    line-height: 2;
+}
+
+/*--------------------------------------------------------  
+セクション4(CONTACT)とフッターのコーディング
+--------------------------------------------------------*/
+.contact {
+    padding: 80px 0 150px;
+}
+
+.contact-form {
+    width: 50%;
+    margin: 50px auto 0;
+}
+
+.contact-form input[type=text],
+.contact-form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 15px;
+    outline: none;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 0;
+    background-color: rgba(255,155,155,0.05);
+    transition: 0.4s;
+}
+
+.contact-form textarea {
+    height: 150px;
+}
+
+.contact-form input[type=submit] {
+    display: block;
+    width: 200px;
+    margin: 40px auto 0;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+
+.contact-form input[type=submit]:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.contact-form input[type=text]:focus,
+.contact-form textarea:focus {
+    box-shadow: 0 0 8px rgba(255,255,255,0.5) inset;
+}
+
+.footer {
+    padding: 12px 0;
+    font-size: 1.3rem;
+}
+
+/*--------------------------------------------------------  
+ヘッダーコーディング(レスポンシブ★)
+--------------------------------------------------------*/
+ @media (max-width: 768px) {    /* メディアクエリの書き方。これは画面サイズが768PX以下の場合に適用するスタイル */
+    .site-title-sub::before,
+    .site-title-sub::after {
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+    }
+
+    .site-title-sub {
+        font-size: 1.7rem;
+    }
+
+    .site-title {
+        margin-top: 35px;
+        font-size: 5rem;
+    }
+
+    .header {
+        padding-top: 60px;
+    }
+
+    .button:hover {
+        opacity: 1;
+    }
+}
+
+/*--------------------------------------------------------  
+セクション１(ABOUT　ME)のコーディング(レスポンシブ★)
+--------------------------------------------------------*/
+@media (max-width: 768px) {
+    .heading {
+        font-size: 2.5rem;
+    }
+
+    body {
+        font-size: 1.3rem;
+    }
+
+    /* このline-line-heightの値は、フォントサイズにかける数字 */
+    .about-text {
+        line-height: 1.8;
+    }
+}
+
+/*--------------------------------------------------------  
+セクション２(WORKS)のコーディング(レスポンシブ★)
+--------------------------------------------------------*/
+@media (max-width: 768px) {　
+    .works-wrapper,
+    .work-box {
+        /* display table display table-cellだったのを解除して縦並びに */
+        display: block;
+    }
+
+    .work-image {
+         display: none;  /* →非表示 */
+    }
+
+    .work-description {
+        position: relative;
+    }
+
+    .work-box::after {
+        top: 0;
+        height: 100%;
+        /* その要素を覆う最小サイズまで画像の大きさを調整してくれる */
+        background-size: cover;
+        /* 反転していた薄っすら背景画像を元に戻す、前はtransform:sclaeY(-1)だった */
+        transform: none;
+    }
+}
+/*--------------------------------------------------------  
+セクション３(MY SKILLS)のコーディング(レスポンシブ★)
+--------------------------------------------------------*/
+@media (max-width: 768px) {
+    .skill-wrapper,
+    .skill-box {
+        display: block;
+    }
+
+    .skill-icon {
+        width: 100px;
+        height: 100px;
+        font-size: 5rem;
+        line-height: 92px;
+    }
+
+    .skill-box {
+        margin: 40px auto;
+    }
+
+    .skill-text {
+        margin: 0;
+    }
+}
+
+/*--------------------------------------------------------  
+セクション4(CONTACT)とフッターのコーディング(レスポンシブ★)
+--------------------------------------------------------*/
+@media (max-width: 1024px) {
+    body {
+        /* iOSで、background-attachment:fixedが使えない為、画像削除しちゃう
+        これはipadの横向きの場合でも適用させたいのでメディア特性は1024pxとする */
+        background-image: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    /* こっちはスマホと縦向きタブレット用 */
+    .contact-form {
+        width: 80%;
+    }
+
+    .contact {
+        padding-bottom: 80px;
+    }
+}
+
+/*
+ シングルページのようなサイトにはレスポンシブで対応。 
+ 既に多機能実装済みのサイトにスマホでも見れるよう対応するには、
+ ファイル読み分けの手段が適しているかもしれない。
+ */
+
+ /* セルフコーディング */
+.heading::before,
+.heading::after {
+    content: '';
+    display: inline-block;
+    width: 0.4em;
+    height: 0.4em;
+    border: 1px solid;
+    transform: rotate(45deg);
+    vertical-align: 10%;
+    margin: 0 0.5em;
+}

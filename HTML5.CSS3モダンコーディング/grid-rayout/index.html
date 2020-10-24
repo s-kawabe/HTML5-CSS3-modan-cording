@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>グリッドレイアウト</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <header class="header item">
+      <h1>
+        <a href="#">
+          <img class="logo" src="images/logo.png" alt="SAMPLE SITE 2">
+        </a>
+      </h1>
+      <nav>
+        <ul>
+          <li class="nav-item"><a href="#">HOME</a></li>
+          <li class="nav-item"><a href="#">ABOUT</a></li>
+          <li class="nav-item"><a href="#">MAIN DISH</a></li>
+          <li class="nav-item"><a href="#">APPETIZER</a></li>
+          <li class="nav-item"><a href="#">BREAK TIME</a></li>
+          <li class="nav-item"><a href="#">COLMUN</a></li>
+          <li class="nav-item"><a href="#">OTHER</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="item item-l item-maindish">
+      <a href="#">
+        <div  class="image">
+          <img src="images/image_L_1.jpg" alt="メインディッシュ">
+        </div>
+          <div class="category">MAIN DISH</div>
+            <p class="description">
+              Lorem ipsum solor sit amet, consectetur adipisicing elit, set do eiusmod
+              tempor incidisunt ut labore et dolore magna aliqua.
+            </p>
+      </a>
+    </section>
+
+    <section class="item item-m item-maindish">
+      <a href="#">
+	<div class="image">
+          <img src="images/image_M_1.jpg" alt="前菜">
+        </div>
+          <div class="category">APPETIZER</div>
+            <p class="description">
+              Lorem ipsum solor sit amet, consectetur adipisicing elit, set do eiusmod
+              tempor incidisunt ut labore et dolore magna aliqua.
+            </p>
+      </a>
+    </section>
+
+    <section class="item item-s item-appetizer">
+      <a href="#">
+	<div class="image">
+          <img src="images/image_S_1.jpg" alt="前菜">
+        </div>
+          <div class="category">APPETIZER</div>
+            <p class="description">
+              Lorem ipsum solor sit amet, consectetur adipisicing elit, set do eiusmod
+              tempor incidisunt ut labore et dolore magna aliqua.
+            </p>
+      </a>
+    </section>
+
+    <section class="item item-s item-appetizer">
+      <a href="#">
+	<div class="image">
+          <img src="images/image_S_1.jpg" alt="前菜">
+        </div>
+          <div class="category">APPETIZER</div>
+            <p class="description">
+              Lorem ipsum solor sit amet, consectetur adipisicing elit, set do eiusmod
+              tempor incidisunt ut labore et dolore magna aliqua.
+            </p>
+      </a>
+    </section>
+
+    <section class="item item-s item-maindish">
+      <a href="#">
+	<div class="image">
+          <img src="images/image_S_1.jpg" alt="前菜">
+        </div>
+          <div class="category">APPETIZER</div>
+            <p class="description">
+              Lorem ipsum solor sit amet, consectetur adipisicing elit, set do eiusmod
+              tempor incidisunt ut labore et dolore magna aliqua.
+            </p>
+      </a>
+    </section>
+
+    <section class="item item-m item-maindish">
+      <a href="#">
+	<div class="image">
+          <img src="images/image_M_1.jpg" alt="前菜">
+        </div>
+          <div class="category">APPETIZER</div>
+            <p class="description">
+              Lorem ipsum solor sit amet, consectetur adipisicing elit, set do eiusmod
+              tempor incidisunt ut labore et dolore magna aliqua.
+            </p>
+      </a>
+    </section>
+
+    <section class="item item-l item-maindish">
+      <a href="#">
+        <div  class="image">
+          <img src="images/image_L_1.jpg" alt="メインディッシュ">
+        </div>
+          <div class="category">MAIN DISH</div>
+            <p class="description">
+              Lorem ipsum solor sit amet, consectetur adipisicing elit, set do eiusmod
+              tempor incidisunt ut labore et dolore magna aliqua.
+            </p>
+      </a>
+    </section>
+
+    <section class="item item-m item-breaktime">
+      <a href="#">
+	<div class="image">
+          <img src="images/image_M_1.jpg" alt="休憩">
+        </div>
+          <div class="category">BREAKTIME</div>
+            <p class="description">
+              Lorem ipsum solor sit amet, consectetur adipisicing elit, set do eiusmod
+              tempor incidisunt ut labore et dolore magna aliqua.
+            </p>
+      </a>
+    </section>
+   
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+  <script>
+    // ↓ HTML/CSSで要素が生成された後にJSを実行する
+    // しかし、もし画像サイズがでかくて読み込みに時間がかかると、
+    // このコードが動かず、レイアウトが生成されないので、画像サイズが明確なのであれば、
+    // CSS側にてサイズを指定しまったほうがよい。
+    window.onload = function(){
+      new Masonry('body',{
+        itemSelecter: '.item',
+        columnWidth: 180,
+        gutter: 4
+      });
+    }
+  </script>
+  </body>
+</html>
